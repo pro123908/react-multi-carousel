@@ -3,3 +3,9 @@
   text-align: center;
   margin: 20px 0px;
 }
+
+.basic-carousel {
+  margin: 0 auto;
+  width: 90%;
+  overflow: hidden;
+}
