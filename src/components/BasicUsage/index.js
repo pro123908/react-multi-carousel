@@ -7,20 +7,57 @@ const BasicUsage = (props) => {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 2,
+      items: 6,
     },
+
+    LargeDesktop: {
+      breakpoint: { max: 2999, min: 1801 },
+      items: 5,
+    },
+
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 1800, min: 1101 },
       items: 3,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
+      breakpoint: { max: 1100, min: 768 },
       items: 2,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
+      breakpoint: { max: 767, min: 0 },
       items: 1,
     },
+  };
+  const CustomRightArrow = ({ onClick, ...rest }) => {
+    const {
+      onMove,
+      carouselState: { currentSlide, deviceType },
+    } = rest;
+    // onMove means if dragging or swiping in progress.
+    return (
+      <button
+        className="carousel-arrow carousel-arrow-right"
+        onClick={() => onClick()}
+      >
+        <i class="arrow-right-heavy-orange"></i>
+      </button>
+    );
+  };
+
+  const CustomLeftArrow = ({ onClick, ...rest }) => {
+    const {
+      onMove,
+      carouselState: { currentSlide, deviceType },
+    } = rest;
+    // onMove means if dragging or swiping in progress.
+    return (
+      <button
+        className="carousel-arrow carousel-arrow-left"
+        onClick={() => onClick()}
+      >
+        <i class="arrow-left-heavy-orange"></i>
+      </button>
+    );
   };
 
   return (
@@ -33,10 +70,15 @@ const BasicUsage = (props) => {
         renderDotsOutside
         infinite={true}
         // autoPlay={props.deviceType !== "mobile" ? true : false}
-        // autoPlaySpeed={100}
+        // autoPlay
+        // autoPlaySpeed={2000}
         keyBoardControl={true}
         customTransition="all 2s"
         // transitionDuration={5000}
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        itemClass="carousel-item padding-40-px"
+        customRightArrow={<CustomRightArrow />}
+        customLeftArrow={<CustomLeftArrow />}
 
         // want to know still about following props
         // deviceType={props.deviceType}
@@ -46,34 +88,34 @@ const BasicUsage = (props) => {
         // dotListClass="custom-dot-list-style"
         // itemClass="carousel-item-padding-40-px"
       >
-        <div>
+        <div class="carousel-item">
           <img src="https://via.placeholder.com/300" />1
         </div>
-        <div>
+        <div class="carousel-item">
           <img src="https://via.placeholder.com/300" />2
         </div>
-        <div>
+        <div class="carousel-item">
           <img src="https://via.placeholder.com/300" />3
         </div>
-        <div>
+        <div class="carousel-item">
           <img src="https://via.placeholder.com/300" />4
         </div>
-        <div>
+        <div class="carousel-item">
           <img src="https://via.placeholder.com/300" />5
         </div>
-        <div>
+        <div class="carousel-item">
           <img src="https://via.placeholder.com/300" />6
         </div>
-        <div>
+        <div class="carousel-item">
           <img src="https://via.placeholder.com/300" />7
         </div>
-        <div>
+        <div class="carousel-item">
           <img src="https://via.placeholder.com/300" />8
         </div>
-        <div>
+        <div class="carousel-item">
           <img src="https://via.placeholder.com/300" />9
         </div>
-        <div>
+        <div class="carousel-item">
           <img src="https://via.placeholder.com/300" />
           10
         </div>
